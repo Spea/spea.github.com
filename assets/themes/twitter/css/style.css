@@ -1,24 +1,10 @@
 body {
     padding-top: 80px;
 }
-.navbar {
-  margin-bottom: 0;
+
+.footer hr {
+    margin: 10px 0;
 }
-.container > footer {
-  margin-top: 20px;
-}
-.container > footer p {
-  text-align: center; /* center align it with the container */
-}
-
-.topbar .btn {
-  border: 0;
-}
-
-
-/* tag_box ======================================================== */
-
-
 
 .contact {
     text-align: right;
