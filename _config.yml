@@ -80,7 +80,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : spea-dev
     livefyre :
       site_id : 123
     intensedebate :
@@ -111,6 +111,9 @@ JB :
   #
   sharing :
     provider : plusone
+
+  tags_list:
+    provider: "custom"
 
   # Settings for all other include helpers can be defined by creating
   # a hash with key named for the given helper. ex:

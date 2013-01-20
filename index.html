@@ -1,5 +1,6 @@
 ---
 layout: page
+title: Speanet.info
 ---
 {% include JB/setup %}
 
@@ -32,64 +33,65 @@ layout: page
     <div class="span9">
         <div class="jumbotron">
             <p>
-                Hi there! My name is Martin also known as <strong>Spea</strong>. I'm a software engineer focused mainly on web stuff like
-                PHP5, Javascript and CSS3, but I also got experience in other Languages like Java or C#.
+                Hi there! My name is Martin also known as <em>Spea</em>. I'm a software engineer who's main focus relies
+                on PHP-Projects and web development (Javascript, CSS, etc), but I also have experience in other languages like Java or C#.
                 In my free time I contribute to open source projects like <a href="https://github.com/symfony/symfony">symfony2</a>
-                or I maintain some of my own projects.
+                or I maintain some of my <a href="#projects">own projects</a>.
             </p>
         </div>
-        <div class="row">
-            <div class="span8">
-                <h2>Projects</h2>
-                <table class="table table-striped table-hover">
-                    <tbody>
-                        <tr>
-                            <th><a href="https://github.com/Spea/SpBowerBundle" target="_blank">SpBowerBundle</a></th>
-                            <td>
-                                Symfony2 Bundle to handle asset dependencies with bower
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><a href="https://github.com/Spea/fixture-dumper" target="_blank">fixture-dumper</a></th>
-                            <td>
-                                Library to dump fixtures from doctrine.
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><a href="https://github.com/Spea/SpFixtureDumperBundle" target="_blank">SpFixtureDumperBundle</a></th>
-                            <td>
-                                Integration bundle for the fixture dumper library in Symfony2
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><a href="https://github.com/Spea/JMSSerializerModule" target="_blank">JMSSerializerModule</a></th>
-                            <td>
-                                Zend Framework2 integration for the jms serializer library
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="span4">
-                <h2>Posts</h2>
-                <table class="table table-striped table-hover">
-                    <tbody>
-                        <tr>
-                            <th><a href="https://github.com/Spea/SpBowerBundle" target="_blank">SpBowerBundle</a></th>
-                        </tr>
-                        <tr>
-                            <th><a href="https://github.com/Spea/fixture-dumper" target="_blank">fixture-dumper</a></th>
-                        </tr>
-                        <tr>
-                            <th><a href="https://github.com/Spea/SpFixtureDumperBundle" target="_blank">SpFixtureDumperBundle</a></th>
-                        </tr>
-                        <tr>
-                            <th><a href="https://github.com/Spea/JMSSerializerModule" target="_blank">JMSSerializerModule</a></th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <h2>Posts</h2>
+        <table class="table table-striped table-hover">
+            <tbody>
+                {% for post in site.posts %}
+                <tr>
+                    <td>
+                        <h3>
+                            <a href="{{ post.url }}">{{ post.title }} </a>
+                            <small>{{ post.date | date: "%B %e, %Y" }} - Category: {{ post.category }} -
+                                {% for tag in post.tags %}
+                                <a href="/tags/{{ tag }}" class="counter" title="View posts tagged with &quot;{{ tag }}&quot;">{{ tag }}</a>
+                                {% if forloop.last != true %}
+                                {% endif %}
+                                {% endfor %}
+                            </small>
+                        </h3>
+                        <p>{{ post.summary }}</p>
+
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2 id="projects">Projects</h2>
+        <table class="table table-striped table-hover">
+            <tbody>
+                <tr>
+                    <th><a href="https://github.com/Spea/SpBowerBundle" target="_blank">SpBowerBundle</a></th>
+                    <td>
+                        Symfony2 Bundle to handle asset dependencies with bower
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/Spea/fixture-dumper" target="_blank">fixture-dumper</a></th>
+                    <td>
+                        Library to dump fixtures from doctrine
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/Spea/SpFixtureDumperBundle" target="_blank">SpFixtureDumperBundle</a></th>
+                    <td>
+                        Integration bundle for the fixture dumper library in Symfony2
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="https://github.com/Spea/JMSSerializerModule" target="_blank">JMSSerializerModule</a></th>
+                    <td>
+                        Zend Framework2 integration for the jms serializer library
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
