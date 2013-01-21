@@ -7,14 +7,16 @@ group: navigation
 
 ## Code Snippets
 
-* [Recursive directory listing](#recursive-dir)
-* [Limited output for directories](#limit-dir)
-* [Check for valentine's day](#valentine)
-* [A simple calendar](#calendar)
-* [Limited output in mysql (Pagination)](#limit-mysql)
-* [Formatted output with tidy](#tidy)
+> Some PHP snippets, which might (or might not) be useful for you. Use at own risk!
 
-Here are some PHP snippets, which might (or might not) be useful for you. Use at own risk!
+1. [Recursive directory listing](#recursive-dir)
+2. [Limited output for directories](#limit-dir)
+3. [Check for valentine's day](#valentine)
+4. [A simple calendar](#calendar)
+5. [Limited output in mysql (Pagination)](#limit-mysql)
+6. [Formatted output with tidy](#tidy)
+
+
 
 <a id="recursive-dir"></a>
 
@@ -107,7 +109,6 @@ $filesPerSite = 10;
 $offset       = $page * $filesPerSite;
 $numberOfPages = ceil($number / $filesPerSite);
 
-//Wenn offset = 0 dann wird es auf 2 gesetzt, damit . und .. nicht Angezeigt wird
 if($offset == 0) {
     $offset = 2;
 }
