@@ -24,7 +24,7 @@ comments: []
 ---
 Ja, richtig gelesen, es handelt sich hierbei um die mysteri&ouml;se<em> IF-Schleife</em>.
 Nat&uuml;rlich ist dieser Ausdruck Schwachsinn aber ich hab mich mal ran gemacht, und versucht eine IF-Schleife zu programmieren, und das ist was dabei rauskam.
-<pre lang="php">
+{% highlight php %}
 <?php
 $c = (isset($c)) ? $c + 1 : 0;
 if($c != 10)
@@ -32,7 +32,7 @@ if($c != 10)
     echo "foo";
     include __FILE__;
 }
-</pre>
+{% endhighlight %}
 
 Wobei sich nat&uuml;rlich die Bedingung f&uuml;r den Abbruch der <em>IF-Schleife</em> variieren l&auml;sst, man muss nur darauf achten, dass man die Variable nicht &uuml;berschreibt.
 Und bitte <strong>bitte</strong> benutzt das nicht f&uuml;r den Produktiveinsatz.
