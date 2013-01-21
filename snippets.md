@@ -2,25 +2,25 @@
 layout: page
 title : Code Snippets
 header : Code Snippets
+group: navigation
 ---
 
-## Code Snippets (uset at own risk)
+## Code Snippets
 
-* [Read a directory recursive](#recursive-dir)
+* [Recursive directory listing](#recursive-dir)
 * [Limited output for directories](#limit-dir)
 * [Check for valentine's day](#valentine)
 * [A simple calendar](#calendar)
 * [Limited output in mysql (Pagination)](#limit-mysql)
 * [Formatted output with tidy](#tidy)
 
-
-Here are some PHP snippets, which might or might not be useful for you.
+Here are some PHP snippets, which might (or might not) be useful for you. Use at own risk!
 
 <a id="recursive-dir"></a>
 
-### Read a directory recursive
+### Recursive directory listing
 
-```php
+{% highlight php %}
 <?php
 // Directory to read from
 $dir = './';
@@ -84,12 +84,13 @@ if(($filename !== false) && file_exists($filename) && is_file($filename)) {
     </form>
     <?php
 }
-```
+{% endhighlight %}
 
 <a id="limit-dir"></a>
 ### Limited output for directories
 
-```php
+
+{% highlight php %}
 <?php
 $foo = new DirectoryIterator('./');
 $page_s = (isset($_GET['page'])) ? $_GET['page'] : 1;
@@ -120,14 +121,13 @@ foreach($limit as $value) {
 
 // Pagination
 for($i = 1; $i <= $numberOfPages; $i++) {
-    //Wenn $i = aktuelle Seite, wird es hervorgehoben
     if($i == (abs($page_s))) {
         echo " <strong>[". $i ."]</strong> ";
     } else {
         echo ' <a href="?page='. $i .'">'. $i .'</a>';
     }
 }
-```
+{% endhighlight %}
 
 <a id="valentine"></a>
 ### Check for valentines day
@@ -135,24 +135,24 @@ for($i = 1; $i <= $numberOfPages; $i++) {
 **Note**
 > This nonsense was completely written by Slashlife (from the IRC-Network QuakeNet). All glory to Slashlife :)
 
-```php
+{% highlight php %}
 <?php
 
 $o='check for valentines day';
 $o=$o{(1>>3)+(3|1)}.$o{(1>>3)|(3>>1)}.$o{(1|(3*3))-1};
-$&ouml;=$o((13<<(3*1))^13^(3&1)).$o(((13^(3&1))<<(1|3))|(3>>1)) . $o(((13^3)<<1)*(1+3)+3+1).$o((13<<(3|1))^(13|(3+1)));
+$o=$o((13<<(3*1))^13^(3&1)).$o(((13^(3&1))<<(1|3))|(3>>1)) . $o(((13^3)<<1)*(1+3)+3+1).$o((13<<(3|1))^(13|(3+1)));
 
-if ($&ouml;($o((13<<(3*1))+(1*(3<<(3>>1)))).$o((13<<(3|1))^13^(3&1)))== (13<<(3+1))+(13>>(3>>1))) {
+if ($o($o((13<<(3*1))+(1*(3<<(3>>1)))).$o((13<<(3|1))^13^(3&1)))== (13<<(3+1))+(13>>(3>>1))) {
     echo 'Happy Valentines Day!';
 } else {
     echo 'Try again tomorrow...';
 }
-```
+{% endhighlight %}
 
 <a id="calendar"></a>
 ### A simple calendar (maybe the simplest you have ever seen - use at own risk)
 
-```php
+{% highlight php %}
 <?php
 $month  = (isset($_GET['month'])) ? (int)$_GET['month'] : date("m");
 $year   = date("Y");
@@ -186,12 +186,12 @@ for($i = $start; $i < $last; $i++) {
 }
 $html .= '</pre>';
 echo $html;
-```
+{% endhighlight %}
 
 <a id="limit-mysql"></a>
 ### Limited output in mysql (Pagination)
 
-```
+{% highlight php %}
 <?php
 $mysqli = new mysqli("localhost", "user", "password", "database")
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
@@ -212,12 +212,12 @@ for($i = 1; $i <= $number_of_sites; $i++) {
         echo '<a href="foo.php?page='. $i .'">'. $i .'</a>';
     }
 }
-```
+{% endhighlight %}
 
 <a id="tidy"></a>
 ### Formatted output with tidy
 
-```php
+{% highlight php %}
 <?php
 $output = '<html> .... </html>';
 $config = array('indent' => true,
@@ -229,4 +229,4 @@ $tidy = new tidy;
 $tidy->parseString($output, $config);
 $tidy->cleanRepair();
 echo $tidy;
-```
+{% endhighlight %}

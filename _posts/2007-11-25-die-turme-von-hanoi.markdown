@@ -47,4 +47,3 @@ Ich habe vor etwas l&auml;ngerer Zeit ein PHP-Script dazu geschrieben, welches a
 
 Das Script ist <a href="http://speanet.info/examples/hanoi.php">hier</a> zu finden.
 
-Der Code dazu folgt in K&uuml;rze

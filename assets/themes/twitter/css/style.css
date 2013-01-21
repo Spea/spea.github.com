@@ -6,6 +6,10 @@ body {
     margin: 10px 0;
 }
 
+.highlight pre {
+    background-color: #232125;
+}
+
 .contact {
     text-align: right;
 }
