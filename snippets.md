@@ -7,7 +7,7 @@ group: navigation
 
 ## Code Snippets
 
-> Some PHP snippets, which might (or might not) be useful for you. Use at own risk!
+> Some PHP snippets which might (or might not) be useful for you. Use at own risk!
 
 1. [Recursive directory listing](#recursive-dir)
 2. [Limited output for directories](#limit-dir)
