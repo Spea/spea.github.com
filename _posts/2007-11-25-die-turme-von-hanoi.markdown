@@ -33,7 +33,7 @@ Dabei gelten folgende Regeln:
 
 Die Frage ist nun, wie setzt man das so um, dass man es in einer Programmiersprache verwenden kann.
 Dazu wurde ein rekursiver Algorithmus gefunden, der wie folgt aussieht:
-<pre language="text">funktion bewege (Zahl i, Stab a, Stab b, Stab c) {
+<pre class="prettyprint linenums">funktion bewege (Zahl i, Stab a, Stab b, Stab c) {
     falls (i > 0) {
        bewege(i-1, a, c, b);
        verschiebe oberste Scheibe von a nach c;

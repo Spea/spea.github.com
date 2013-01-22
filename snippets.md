@@ -22,7 +22,7 @@ group: navigation
 
 ### Recursive directory listing
 
-{% highlight php %}
+{% capture recursive_dir %}
 <?php
 // Directory to read from
 $dir = './';
@@ -86,13 +86,13 @@ if(($filename !== false) && file_exists($filename) && is_file($filename)) {
     </form>
     <?php
 }
-{% endhighlight %}
+{% endcapture %}
+<pre class="prettyprint lang-php linenums">{{ recursive_dir|xml_escape }}</pre>
 
 <a id="limit-dir"></a>
 ### Limited output for directories
 
-
-{% highlight php %}
+{% capture limit_dir %}
 <?php
 $foo = new DirectoryIterator('./');
 $page_s = (isset($_GET['page'])) ? $_GET['page'] : 1;
@@ -128,7 +128,9 @@ for($i = 1; $i <= $numberOfPages; $i++) {
         echo ' <a href="?page='. $i .'">'. $i .'</a>';
     }
 }
-{% endhighlight %}
+{% endcapture %}
+<pre class="prettyprint lang-php linenums">{{ limit_dir|xml_escape }}</pre>
+
 
 <a id="valentine"></a>
 ### Check for valentines day
@@ -136,9 +138,8 @@ for($i = 1; $i <= $numberOfPages; $i++) {
 **Note**
 > This nonsense was completely written by Slashlife (from the IRC-Network QuakeNet). All glory to Slashlife :)
 
-{% highlight php %}
-<?php
-
+<pre class="prettyprint lang-php linenums">
+// foobar
 $o='check for valentines day';
 $o=$o{(1>>3)+(3|1)}.$o{(1>>3)|(3>>1)}.$o{(1|(3*3))-1};
 $o=$o((13<<(3*1))^13^(3&1)).$o(((13^(3&1))<<(1|3))|(3>>1)) . $o(((13^3)<<1)*(1+3)+3+1).$o((13<<(3|1))^(13|(3+1)));
@@ -148,12 +149,12 @@ if ($o($o((13<<(3*1))+(1*(3<<(3>>1)))).$o((13<<(3|1))^13^(3&1)))== (13<<(3+1))+(
 } else {
     echo 'Try again tomorrow...';
 }
-{% endhighlight %}
+</pre>
 
 <a id="calendar"></a>
 ### A simple calendar (maybe the simplest you have ever seen - use at own risk)
 
-{% highlight php %}
+{% capture calendar %}
 <?php
 $month  = (isset($_GET['month'])) ? (int)$_GET['month'] : date("m");
 $year   = date("Y");
@@ -163,8 +164,8 @@ $first_weekday          = date("w", $first_day_timestamp);
 $last_day_timestamp     = mktime(0, 0, 1, $month, date("t", $first_day_timestamp), $year);
 $last_weekday           = date("w", $last_day_timestamp);
 $array                  = array('Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.', 'So.');
-$html                   = '<pre>'."\t\t    ".'<a href="'. htmlspecialchars($_SERVER['PHP_SELF']) .'?month='. ($month-1) .'"><<</a>'."\t    ";
-$html                  .= '<a href="'. htmlspecialchars($_SERVER['PHP_SELF']) .'?month='. ($month+1) .'">>></a>'."\n\n";
+$html                   = '<pre>'."\t\t    ".'<a href="'. htmlspecialchars($_SERVER['PHP_SELF']) .'?month='. ($month-1) .'"></a>'."\t    ";
+$html                  .= '<a href="'. htmlspecialchars($_SERVER['PHP_SELF']) .'?month='. ($month+1) .'"></a>'."\n\n";
 $html                  .= "\t\t    ". date("M", $first_day_timestamp) .' - '. date("Y", $first_day_timestamp) ."\n";
 for($i = 0; $i < 7; $i++) {
     $html .= '<span>'. $array[$i] ."</span>\t";
@@ -187,12 +188,14 @@ for($i = $start; $i < $last; $i++) {
 }
 $html .= '</pre>';
 echo $html;
-{% endhighlight %}
+{% endcapture %}
+
+<pre class="prettyprint lang-php linenums">{{ calendar|xml_escape }}</pre>
 
 <a id="limit-mysql"></a>
 ### Limited output in mysql (Pagination)
 
-{% highlight php %}
+{% capture limit_mysqli %}
 <?php
 $mysqli = new mysqli("localhost", "user", "password", "database")
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
@@ -213,12 +216,14 @@ for($i = 1; $i <= $number_of_sites; $i++) {
         echo '<a href="foo.php?page='. $i .'">'. $i .'</a>';
     }
 }
-{% endhighlight %}
+{% endcapture %}
+
+<pre class="prettyprint lang-php linenums">{{ limit_mysqli|xml_escape }}</pre>
 
 <a id="tidy"></a>
 ### Formatted output with tidy
 
-{% highlight php %}
+{% capture tidy %}
 <?php
 $output = '<html> .... </html>';
 $config = array('indent' => true,
@@ -230,4 +235,6 @@ $tidy = new tidy;
 $tidy->parseString($output, $config);
 $tidy->cleanRepair();
 echo $tidy;
-{% endhighlight %}
+{% endcapture %}
+
+<pre class="prettyprint lang-php linenums">{{ tidy|xml_escape }}</pre>

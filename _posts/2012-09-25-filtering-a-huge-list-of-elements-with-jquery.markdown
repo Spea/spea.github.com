@@ -24,7 +24,7 @@ comments: []
 ---
 I wanted to filter a huge list of cities (~1800 entries) with jQuery. So I added an input field which triggers a filter event. The event basically looked like this
 
-{% highlight javascript %}
+<pre class="prettyprint lang-javascript linenums">
 var input = $("input");
 if (input.val().length === 0) {
   $("#cities li").show();
@@ -32,7 +32,7 @@ if (input.val().length === 0) {
   $("#cities li:contains('" + (input.val()) + "')").show();
   $("#cities li:not(:contains('" + (input.val()) + "'))").hide();
 }
-{% endhighlight %}
+</pre>
 
 Unfortunately the whole site was blocked for ~3 seconds when the show method had to process a lot of elements (> 500).
 
@@ -42,7 +42,7 @@ After doing some research on this, I found out that the problem is a repaint/ref
 
 To avoid a repaint/reflow I tried "hiding" the elements from the user by moving them to a place where they can't see them.
 
-{% highlight javascript %}
+<pre class="prettyprint lang-javascript linenums">
 var input = $("input");
 if (input.val().length === 0) {
   $("#cities li").css("position", "").css("top", "");
@@ -50,8 +50,7 @@ if (input.val().length === 0) {
   $("#cities li:contains('" + (input.val()) + "')").css("position", "").css("top", "");
   $("#cities li:not(:contains('" + (input.val()) + "'))").css("position", "absolute").css("top", "-20000em");
 }
-{% endhighlight %}
-
+</pre>
 
 As it turns out the site is no longer blocked for several seconds, so the problem really was the repaint/reflow.
 
