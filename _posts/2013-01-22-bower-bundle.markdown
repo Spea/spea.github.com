@@ -69,13 +69,13 @@ sp_bower:
 </pre>
 
 This tells the bundle to activate bower handling with the default values for the AcmeDemoBundle.
-The default lookup path for the bower dependency file ```component.json``` is ```$bundle/Resources/config/bower```.
+The default lookup path for the bower dependency file <code>component.json</code> is <code>$bundle/Resources/config/bower</code>.
 <hr />
 
 ### Adding some bower dependencies.
 
 The AcmeDemoBundle is activated for bower handling, lets add some dependencies to it! To do this, we create a file called
-```component.json``` in the directory ```src/Acme/DemoBundle/Resources/config/bower/```.
+<code>component.json</code> in the directory <code>src/Acme/DemoBundle/Resources/config/bower/</code>.
 
 <pre class="prettyprint linenums lang-json">
 {
@@ -90,7 +90,7 @@ The AcmeDemoBundle is activated for bower handling, lets add some dependencies t
 ### Install bower dependencies
 
 Everything is set up correctly, so we are now able to install the defined dependencies with the integrated
-command. By default the dependencies will be installed in the directory ```$bundle/Resources/public/components```.
+command. By default the dependencies will be installed in the directory <code>$bundle/Resources/public/components</code>.
 
 <pre class="prettyprint lang-sh">
 $ app/console sp:bower:install
@@ -113,7 +113,7 @@ bower installing jquery#1.8.3
 ### Use the automatically registered assets
 
 Till now there is nothing special, the bundle installs bower dependencies which could also be achieved with the command
-```bower install```, but a great benefit of this bundle is the automatic registration of all your dependencies
+<code>bower install</code>, but a great benefit of this bundle is the automatic registration of all your dependencies
 in the assetic manager.
 
 So if you now want to use the installed bootstrap assets, you can do so by simply writing the following.
@@ -133,7 +133,7 @@ So if you now want to use the installed bootstrap assets, you can do so by simpl
 {% endcapture %}
 <pre class="prettyprint">{{ assetic_usage|xml_escape }}</pre>
 
-Since ```bootstrap``` has a dependency on ```jquery``` it will be automatically included in the generated assets.
+Since <code>bootstrap</code> has a dependency on <code>jquery</code> it will be automatically included in the generated assets.
 
 <div class="alert alert-block alert-warning">
     <i class="icon-warning-sign icon-large"></i> Some dependencies (like <a href="https://github.com/xing/wysihtml5">wysihtml5</a>)
@@ -143,7 +143,7 @@ Since ```bootstrap``` has a dependency on ```jquery``` it will be automatically 
 
 But wait, there is more! You can also add assetic filters to all (or only some specific) packages.
 
-Let's say that you want to add the ```uglifyjs``` fillter to all javascript packages and the ```cssrewrite``` filter
+Let's say that you want to add the <code>uglifyjs</code> fillter to all javascript packages and the <code>cssrewrite</code> filter
 only to the bootstrap package, then you would write the following:
 
 <pre class="prettyprint linenums">
@@ -170,8 +170,8 @@ sp_bower:
 
 Sometimes you want to use a different asset or config directory or you even want to name your bower dependency file differently.
 
-So lets assume you want to name your dependency file ```bower-dependencies.json``` and you want to place this file in the
-following directory: ```%kernel.root_dir%/Resources/bower```.
+So lets assume you want to name your dependency file <code>bower-dependencies.json</code> and you want to place this file in the
+following directory: <code>%kernel.root_dir%/Resources/bower</code>.
 
 <pre class="prettyprint linenums">
 # app/config/config.yml
@@ -201,7 +201,7 @@ bower installing bootstrap#2.2.2
 bower installing jquery#1.8.3
 </pre>
 
-As you can see, the assets are now installed into ```%kernel.root_dir%/public/components```, this is due to the
+As you can see, the assets are now installed into <code>%kernel.root_dir%/public/components</code>, this is due to the
 fact that the default asset path is always relative to the config directory, so it is necesary to adjust the asset path
 too.
 
@@ -242,7 +242,7 @@ bower installing jquery#1.8.3
 #### Install on warmup
 
 If you want to install the bower dependencies on every cache warmup, you have to enable the option
-```install_on_warmup```.
+<code>install_on_warmup</code>.
 
 <pre class="prettyprint linenums">
 # app/config/config.yml
@@ -252,10 +252,10 @@ sp_bower:
 
 #### Kepping the generated bower configuration file
 
-The bundle automatically creates a ```.bowerrc``` file based on the configuration you made in the ```app/config/config.yml``` file when
+The bundle automatically creates a <code>.bowerrc</code> file based on the configuration you made in the <code>app/config/config.yml</code> file when
 installing the dependencies. The default setting is, that this file is only created temporarily, but sometimes you might
-want to keep this file. By setting the option ```keep_bowerrc``` to ```true``` the generated files will be placed into the same
-directory where you have your ```component.json```.
+want to keep this file. By setting the option <code>keep_bowerrc</code> to <code>true</code> the generated files will be placed into the same
+directory where you have your <code>component.json</code>.
 
 <pre class="prettyprint linenums">
 # app/config/config.yml
@@ -266,7 +266,7 @@ sp_bower:
 #### Disable automatic assetic registration of used bower packages
 
 If, for whatever reason, you don't want this bundle to automatically register the packages in the assetic
-manager, you must set the ```assetic``` option to false.
+manager, you must set the <code>assetic</code> option to false.
 
 <pre class="prettyprint linenums">
 # app/config/config.yml
@@ -277,7 +277,7 @@ sp_bower:
 
 #### Use the provided composer script to install dependencies on composer install/update
 
-This bundle provides a composer script to install the dependencies when ```composer update/install``` is executed.
+This bundle provides a composer script to install the dependencies when <code>composer update/install</code> is executed.
 
 <pre class="prettyprint lang-json linenums">
 {
