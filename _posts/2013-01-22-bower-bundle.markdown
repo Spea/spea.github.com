@@ -8,6 +8,12 @@ month: 1
 day: 22
 ---
 
+
+## Updates
+
+2013-12-16: Fixed configuration to reflect latest bower changes (use bower.json instead of component.json)
+
+
 ## SpBowerbundle
 
 In this post I will talk about [SpBowerBundle](https://github.com/Spea/SpBowerBundle) which I created a few month ago.
@@ -69,13 +75,13 @@ sp_bower:
 </pre>
 
 This tells the bundle to activate bower handling with the default values for the AcmeDemoBundle.
-The default lookup path for the bower dependency file <code>component.json</code> is <code>$bundle/Resources/config/bower</code>.
+The default lookup path for the bower dependency file <code>bower.json</code> is <code>$bundle/Resources/config/bower</code>.
 <hr />
 
 ### Adding some bower dependencies.
 
 The AcmeDemoBundle is activated for bower handling, lets add some dependencies to it! To do this, we create a file called
-<code>component.json</code> in the directory <code>src/Acme/DemoBundle/Resources/config/bower/</code>.
+<code>bower.json</code> in the directory <code>src/Acme/DemoBundle/Resources/config/bower/</code>.
 
 <pre class="prettyprint linenums lang-json">
 {
@@ -138,7 +144,7 @@ Since <code>bootstrap</code> has a dependency on <code>jquery</code> it will be 
 <div class="alert alert-block alert-warning">
     <i class="icon-warning-sign icon-large"></i> Some dependencies (like <a href="https://github.com/xing/wysihtml5">wysihtml5</a>)
     will not be automatically registered in the assetic manager because some of them haven't defined a <strong>main</strong>
-    section in their <strong>component.json</strong>. But you can still add them manually.
+    section in their <strong>bower.json</strong>. But you can still add them manually.
 </div>
 
 But wait, there is more! You can also add assetic filters to all (or only some specific) packages.
@@ -218,7 +224,7 @@ sp_bower:
 Lets run the install command again
 
 <pre class="prettyprint lang-sh">
-$ app/console sp:bower
+$ app/console sp:bower:install
 Installing bower dependencies for "AcmeDemoBundle" into "/home/spea/workspace/test-bower-bundle/app/Resources/public/acme_bundle_components"
 bower cloning git://github.com/twitter/bootstrap.git
 bower cached git://github.com/twitter/bootstrap.git
@@ -255,7 +261,7 @@ sp_bower:
 The bundle automatically creates a <code>.bowerrc</code> file based on the configuration you made in the <code>app/config/config.yml</code> file when
 installing the dependencies. The default setting is, that this file is only created temporarily, but sometimes you might
 want to keep this file. By setting the option <code>keep_bowerrc</code> to <code>true</code> the generated files will be placed into the same
-directory where you have your <code>component.json</code>.
+directory where you have your <code>bower.json</code>.
 
 <pre class="prettyprint linenums">
 # app/config/config.yml
