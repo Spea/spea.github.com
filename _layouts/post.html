@@ -1,5 +1,56 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/twitter/post.html %}
+
+<div class="page-header">
+    <h1 class="display-6 border-bottom mb-4">{{ page.title }}</h1>
+</div>
+
+<div class="row">
+    <div class="col-10">
+        {{ content }}
+
+        <hr>
+
+        <nav class="row">
+            <ul class="pagination col">
+                {% if page.previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ page.previous.url }}" title="{{ page.previous.title }}" tabindex="-1">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ page.previous.url }}" title="{{ page.previous.title }}" tabindex="-1">Previous</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="pagination justify-content-end col">
+                {% if page.next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ page.next.url }}" title="{{ page.next.title }}">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-2">
+        <h4>Published</h4>
+        <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
+
+        {% unless page.tags == empty %}
+        <h4>Tags</h4>
+        <div>
+            {% for tag in page.tags %}
+                <a class="badge badge-secondary" href="/tags.html#{{ tag }}-ref">
+                    {{ tag }}
+                </a>
+            {% endfor %}
+        </div>
+        {% endunless %}
+    </div>
+</div>
